@@ -18,5 +18,11 @@ app.use(cookieParser());
 
 // for files we use third party package multer
 // when I have data from url then all use it
-
+// routes import
+import userRouter from "./routes/user.routes.js"
+import middlewareWrapper from "cors"
+//routes declaration
+//now we need middlewareWrapper
+app.use("/api/v1/users",userRouter);
+// http://localhost:8000/users/register
 export {app}
