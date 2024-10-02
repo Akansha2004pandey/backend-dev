@@ -1,16 +1,19 @@
-import multer from "multer"
+// src/middlewares/multer.middleware.js
+import multer from 'multer';
+import path from 'path';
 
+// Set up storage configuration
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/temp')
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Specify the uploads directory
     },
-      
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
-    }
-  })
-  
-export const upload = multer({ storage: storage })
-// we have just done project setup
-// production grade setup
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Use a unique filename
+    },
+});
+
+// Initialize multer with the storage configuration
+const upload = multer({ storage });
+
+// Export the upload middleware
+export { upload };
