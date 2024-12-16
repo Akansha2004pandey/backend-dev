@@ -1,6 +1,6 @@
 // src/routes/user.routes.js
 import { Router } from "express";
-import { registerUser,logOutUser,loginUser } from "../controllers/user.controller.js"; // Ensure correct path and export
+import { registerUser,logOutUser,loginUser ,refreshAccessToken} from "../controllers/user.controller.js"; // Ensure correct path and export
 import {upload} from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router();
